@@ -1,0 +1,15 @@
+.scrollable{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    
+}
+.tt{
+    margin: 5px;
+    padding: 5px;
+}
+.scrollable{
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 100%;
+}

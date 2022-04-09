@@ -1,0 +1,200 @@
+
+<div id="container" class="container-fluid">
+    <div id="patientData" class="modal-body data">
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                ID
+            </dt>
+            <dd class="col-sm-8 col-8 ">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">🔑</span>
+                    <input type="text" class="form-control" [value]="patient.id" aria-label="ID" aria-describedby="basic-addon1">
+                </div>               
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                Name
+            </dt>
+            <dd class="col-sm-6 col-6 ">
+                {{patient.name}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                fileNo
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.fileNo}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                citizenId
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.citizenId}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                birthdate
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.birthdate|date}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                gender
+            </dt>
+            <dd class="col-sm-6 col-6" *ngIf="patient.gender==0">
+                Male
+            </dd>
+            <dd class="col-sm-6 col-6" *ngIf="patient.gender==1">
+                Female
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                natinality
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.natinality}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                phoneNumber
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.phoneNumber}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                email
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.email}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                country
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.country}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                city
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.city}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                street
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.street}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                address1
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.address1}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                address2
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.address2}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                contactPerson
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.contactPerson}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                contactRelation
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.contactRelation}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-4 col-4">
+                contactPhone
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.contactPhone}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                firstVisitDate
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.firstVisitDate|date}}
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-4 col-4">
+                recordCreationDate
+            </dt>
+            <dd class="col-sm-6 col-6">
+                {{patient.recordCreationDate |date}}
+            </dd>
+
+        </dl>
+    </div>
+</div>

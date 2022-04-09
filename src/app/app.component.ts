@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PatientInfoSys.ClientApp';
+  Loge="..\\assets\\1.png";
 }

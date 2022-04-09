@@ -1,0 +1,110 @@
+<div class="row tt">
+  <div class="col-3">
+    <form class="d-flex">
+      <app-add-patient (refreshList)="receivePatients()"> </app-add-patient>
+    </form>
+  </div>
+  <div class="col-9">
+      <div class="d-flex">
+        <input [(ngModel)]="fileNo" class="form-control me-2" type="search" placeholder="Search By Number" aria-label="Search">
+        <input [(ngModel)]="name" class="form-control me-2" type="search" placeholder="Search By Name" aria-label="Search">
+        <input [(ngModel)]="phone" class="form-control me-2" type="search" placeholder="Search By Phone Number" aria-label="Search">
+          <button class="btn btn-outline-info" (click)="search()" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+          </button>  
+        </div>
+  </div>
+  <br>
+<br>
+  </div>
+
+<div class="container-fluid">
+  <div class="scrollable">
+    <table class="table table-striped" style="overflow-x: auto;overflow-y: hidden;width: 100%;">
+        <thead>
+          <tr>
+            
+            <th>Name</th>
+            <th>File</th>
+            <th>Citizen Id</th>
+            <th>Gender</th>
+            <th>Natinality</th>
+            <th>Phone Number</th>
+            <th>E-mail</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Contact Person</th>
+            <th>Contact Relation</th>
+            <th>Contact Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td>{{patient.name}}</td>
+            <td>{{patient.fileNo}}</td>
+            <td>{{patient.citizenId}}</td>
+            <td *ngIf="patient.gender==1">Female</td>
+            <td *ngIf="patient.gender==0">Male</td>
+            <td>{{patient.natinality}}</td>
+            <td>{{patient.phoneNumber}}</td>
+            <td>{{patient.email}}</td>
+            <td>{{patient.country}}</td>
+            <td>{{patient.city}}</td>
+            <td>{{patient.contactPerson}}</td>
+            <td>{{patient.contactRelation}}</td>
+            <td>{{patient.contactPhone}}</td>
+            <td>
+              <button class="btn btn-outline-danger btn-sm" type="button" (click)="delete(patient.id)"  placement="top" ngbTooltip="Delete">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                  <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
+                </svg>
+              </button>
+              &nbsp;
+              <button class="btn btn-outline-info btn-sm" type="button" (click)="openPatientDetailsModal(PatientDetailsTemplate)" placement="top" ngbTooltip="Details">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+              </button>
+              &nbsp;
+              <app-update-patient (refreshList)="receivePatients()" [patient]="patient"></app-update-patient>
+              <ng-template #PatientDetailsTemplate>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">{{patient.name}} Details</h4>
+                  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <app-patient-details [patient]="patient"></app-patient-details>
+                </div>
+              </ng-template>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+  <br>
+
+  <div class="d-flex justify-content-center">
+    <button id="search" style="height: 35px;" class="btn btn-outline-success btn-sm" type="button" (click)="clearSearch()" placement="top" ngbTooltip="Clear Search & Refresh">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+      </svg>
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <ngb-pagination *ngIf="pager != null" [collectionSize]="pager.TotalCount" [pageSize]="itemsPP" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="15" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+    &nbsp;&nbsp;&nbsp;
+    <div class="col-2">
+      <select class="form-select border border-2" [(ngModel)]="itemsPP" (ngModelChange)="receivePatients()" placement="top" ngbTooltip="Items Per Page">
+        <option selected [ngValue]="3">3 Items</option>
+        <option [ngValue]="5">5 Items</option>
+        <option [ngValue]="8">8 Items</option>
+      </select>
+    </div>
+  </div>
+<br><br>
+</div>
+

@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+:root,*{
+    font-family: 'Cairo', sans-serif;
+}
+.manteq-logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
